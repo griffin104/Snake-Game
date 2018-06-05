@@ -1,0 +1,56 @@
+<style>
+    .title {
+        color:green;
+        position: relative;
+        margin: auto;
+        text-align: center;
+    }
+    .button {
+        background-color:green;
+        color: white;
+        text-align: center;
+        padding:15px 30px;
+        position: relative;
+        margin:auto;
+    }
+
+    .button:hover {
+        background-color: darkgreen;
+    }
+
+    .game {
+        position: relative;
+        margin:  auto;
+        text-align: center;
+    }
+    .score {
+        color:red;
+        position: relative;
+        left: 50px;
+    }
+</style>
+
+<div> 
+    <div class = "title" id = "title">
+        <h1>Snake</h1>
+        <button class = "button" id = "start">Play</button>
+        <button class = "button" id = "settingsButton">Settings</button>
+    </div>
+    <div class = "game" id="game" style="display:none">
+        <canvas id="snake" height="600" width="600">
+        </canvas>
+        <div class = "score" id = "curScore"></div>
+        <div class = "score" id = "highScore"></div>
+    </div>
+    <div id="settings" style="display:none">
+        <select id = "speed">
+            <option value= "100">Slow</option>;
+            <option value= "80">Medium</option>;
+            <option value = "6 0">Fast</option>;
+        </select>
+        <button class = "button" id = "back">Back</button>
+    </div>
+</div>
+<script src="Settings.js"></script>
+<script src="Main.js"></script>
+<script src="Input.js"></script>
