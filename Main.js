@@ -1,8 +1,9 @@
 let doDraw = (function () {
     let snakeBody = function(x, y) {
-        ctx.fillStyle = 'green';
+        let snakeColor = JSON.parse(document.getElementById("color").options[document.getElementById("color").selectedIndex].value);
+        ctx.fillStyle = snakeColor[0];
         ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
-        ctx.strokeStyle = 'darkgreen';
+        ctx.strokeStyle = snakeColor[1];
         ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
     }
 
@@ -42,6 +43,12 @@ let doDraw = (function () {
         return false;
     }
 
+    function getSize() {
+        let x = document.getElementById("size").options[document.getElementById("size").selectedIndex].value;
+        document.getElementById("snake").width = x;
+        document.getElementById("snake").height = x;
+    }
+
     let paint = function() {
         ctx.fillStyle = "lightgrey";
         ctx.fillRect(0 , 0 , myCanvas.width - myCanvas.width % snakeSize , myCanvas.height - myCanvas.height % snakeSize);
@@ -62,6 +69,8 @@ let doDraw = (function () {
             snakeY++;
         }
 
+        gridHeight = Math.floor(myCanvas.height / snakeSize);
+        gridWidth = Math.floor(myCanvas.width / snakeSize);
         if (snakeX === -1 || snakeY === -1 || snakeX === gridWidth || snakeY === gridHeight || checkCollision(snakeX, snakeY, snake)) {
             ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
             document.getElementById("title").style.display = "block";
@@ -84,7 +93,8 @@ let doDraw = (function () {
                 document.getElementById("highScore").innerHTML = "Hi-Score: " + hiscore;
             }
             clearInterval(gameLoop);
-            gameLoop = setInterval(paint, speed-=1);
+            speed -= (Math.log(speed)/Math.log(80));
+            gameLoop = setInterval(paint, speed);
         } else {
             snake.pop();
         }
@@ -103,6 +113,7 @@ let doDraw = (function () {
         document.getElementById("highScore").innerHTML = "Hi-Score: " + hiscore;
         direction = 'down';
         speed = document.getElementById("speed").options[document.getElementById("speed").selectedIndex].value
+        getSize();
         drawSnake();
         createApple();
         gameLoop = setInterval(paint, speed);
