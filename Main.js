@@ -33,7 +33,6 @@ let doDraw = (function () {
                 i = 0;
             }
         }
-        console.log(apple);
     }
 
     let checkCollision = function(x, y, array) {
