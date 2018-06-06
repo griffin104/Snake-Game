@@ -27,6 +27,7 @@
 
     .game {
         position:relative;
+        left: -50%;
     }
 
     .score {
@@ -67,12 +68,12 @@
         <button class = "button" id = "settingsButton">Settings</button>
     </div>
     <div class = "fullGame" id="game" style="display:none">
-        <canvas id="snake" height="600" width="600">
+        <canvas class = "game" id="snake" height="600" width="600">
         </canvas>
         <div class = "score" id = "curScore"></div>
         <div class = "score" id = "highScore"></div>
     </div>
-    <div id="settings" style="display: block;">
+    <div id="settings" style="display: none;">
         <h2 class="title">Settings</h2>
         <form class="settings" id="settings">
                 <h3 class="options">Speed</h3>
