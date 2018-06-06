@@ -33,6 +33,7 @@ let doDraw = (function () {
                 i = 0;
             }
         }
+        console.log(apple);
     }
 
     let checkCollision = function(x, y, array) {
@@ -47,6 +48,8 @@ let doDraw = (function () {
         let x = document.getElementById("size").options[document.getElementById("size").selectedIndex].value;
         document.getElementById("snake").width = x;
         document.getElementById("snake").height = x;
+        gridHeight = Math.floor(x / snakeSize);
+        gridWidth = Math.floor(x / snakeSize);
     }
 
     let paint = function() {
@@ -69,8 +72,6 @@ let doDraw = (function () {
             snakeY++;
         }
 
-        gridHeight = Math.floor(myCanvas.height / snakeSize);
-        gridWidth = Math.floor(myCanvas.width / snakeSize);
         if (snakeX === -1 || snakeY === -1 || snakeX === gridWidth || snakeY === gridHeight || checkCollision(snakeX, snakeY, snake)) {
             ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
             document.getElementById("title").style.display = "block";
