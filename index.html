@@ -11,22 +11,52 @@
         text-align: center;
         padding:15px 30px;
         position: relative;
-        margin:auto;
     }
 
     .button:hover {
         background-color: darkgreen;
+        cursor: pointer;
+    }
+
+    .fullGame {
+        position: absolute;
+        margin:  auto;
+        text-align: center;
+        left: 50%;
     }
 
     .game {
-        position: relative;
-        margin:  auto;
-        text-align: center;
+        position:relative;
     }
+
     .score {
         color:red;
         position: relative;
         left: 50px;
+    }
+
+    .settings {
+        position: relative;
+        margin: auto;
+        text-align: center;
+    }
+
+    .options {
+        position: relative;
+    }
+
+    .dropDown {
+        background-color: green;
+        color: white;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        position: relative;
+    }
+
+    .dropDown:hover {
+        background-color: darkgreen;
+        cursor: pointer;
     }
 </style>
 
@@ -36,20 +66,40 @@
         <button class = "button" id = "start">Play</button>
         <button class = "button" id = "settingsButton">Settings</button>
     </div>
-    <div class = "game" id="game" style="display:none">
+    <div class = "fullGame" id="game" style="display:none">
         <canvas id="snake" height="600" width="600">
         </canvas>
         <div class = "score" id = "curScore"></div>
         <div class = "score" id = "highScore"></div>
     </div>
-    <div id="settings" style="display:none">
-        <select id = "speed">
-            <option value= "100">Slow</option>;
-            <option value= "80">Medium</option>;
-            <option value = "60">Fast</option>;
+    <div id="settings" style="display: block;">
+        <h2 class="title">Settings</h2>
+        <form class="settings" id="settings">
+                <h3 class="options">Speed</h3>
+        <select class="dropDown" id="speed">
+            <option value="100">Slow</option>;
+            <option selected="selected" value="80">Medium</option>;
+            <option value="60">Fast</option>;
         </select>
-        <button class = "button" id = "back">Back</button>
+                 <h3 class="options">Game Size</h3>
+        <select class="dropDown" id="size">
+            <option value="200">Small</option>;
+            <option value="400" selected="selected">Medium</option>;
+            <option value="600">Large</option>;
+        </select>
+            <h3 class="options">Color</h3>
+        <select class="dropDown" id="color">
+            <option value= ["green","darkgreen"] selected="selected" style="background-color: green">Green</option>
+            <option value= ["red","darkred"] style="background-color: red">Red</option>
+            <option value= ["blue","darkblue"] style="background-color: blue">Blue</option>
+            <option value= ["purple","magenta"] style="background-color: purple">Purple</option>
+            <option value= ["black","black"] style="background-color: black">Black</option>
+        </select>
+         </form>
+    <div style="position: absolute; left: 50%">
+        <button class="button" id="back" style="left: -50%; top: 20px">Back</button>
     </div>
+</div>
 </div>
 <script src="Settings.js"></script>
 <script src="Main.js"></script>
